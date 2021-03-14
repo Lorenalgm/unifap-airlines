@@ -1,11 +1,14 @@
 package airlines;
 
+import java.util.Scanner;
+
 public class Passageiro {
 	String nome;
 	String cpf;
 	String email;
 	String celular;
-
+	static Scanner input = new Scanner(System.in);
+	
 	public Passageiro(String nome, String cpf, String email, String celular) {
 	   this.nome = nome;
 	   this.cpf = cpf;
@@ -44,6 +47,22 @@ public class Passageiro {
 	public void setCelular(String celular) {
 	   this.celular = celular;
 	}
+	
+	public static Passageiro cadastrarPasseiro() {
+		 System.out.print("Nome do passageiro: ");
+         String nome = input.nextLine();
+         System.out.print("CPF do passageiro: ");
+         String cpf =input.nextLine();
+         System.out.print("E-mail do passageiro: ");
+         String email = input.nextLine();
+         System.out.print("Celular do passageiro: ");
+         String celular = input.nextLine();
+         
+         Passageiro p = new Passageiro(nome, cpf, email, celular);
+         System.out.print("\nPassageiro cadastrado com sucesso!\n");
+         
+		return p;        
+    }
 	 
 
 }
