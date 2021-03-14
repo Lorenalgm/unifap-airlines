@@ -24,10 +24,10 @@ public class Menu {
 			       cadastrarVoo();
 			       break;
 			     case 2:
-//			       listarVoos();
+			       listarVoos();
 			       break;
 			     case 3:
-//			       efetuarReserva();
+			       efetuarReserva();
 			       break;
 			     case 4:
 //			       listarReservas();
@@ -88,6 +88,37 @@ public class Menu {
 		   } 
 		 }
 	}
+	
+	public static void efetuarReserva(){
+		 System.out.print("\nInforme o voo: ");
+		 int numero = Integer.parseInt(input.nextLine());
+		 boolean encontrado = false;
+
+		 for(int i = 0; i < voos.length; i++){
+		   if((voos[i] != null) && (voos[i].getNumero() == numero)){
+		     encontrado = true;
+		         System.out.print("Nome do passageiro: ");
+		         String nome = input.nextLine();
+		         System.out.print("CPF do passageiro: ");
+		         String cpf =input.nextLine());
+		         System.out.print("E-mail do passageiro: ");
+		         String email = input.nextLine();
+		         System.out.print("Celular do passageiro: ");
+		         String celular = input.nextLine();
+		         Passageiro p = new Passageiro(nome, cpf, email, celular);
+		         Reserva r = new Reserva(cpf, numero);
+		         System.out.println("\nReserva efetuada com sucesso.\n");
+		         break;
+		    }
+		  }
+		    
+		 if(!encontrado){
+		   System.out.println("\nO voo não foi encontrado.\n"); 
+		 }
+	}
+
+	
+	
 
 
 }
