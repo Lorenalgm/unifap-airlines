@@ -1,11 +1,14 @@
 package airlines;
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 public class Menu {
 	 static Scanner input = new Scanner(System.in);
-	 static Voo voos[] = new Voo[10];
+	 static ArrayList<Voo> voos = new ArrayList<Voo>();
 
 	public static void main(String[] args) {
+		System.out.println("Bem vindo ao Unifap Airline!\n");
 		 exibirMenu(); 
 	} 
 
@@ -21,16 +24,16 @@ public class Menu {
 			  
 			   switch(opcao){
 			     case 1:
-			       cadastrarVoo();
+			       Voo.cadastrarVoo();
 			       break;
 			     case 2:
-			       listarVoos();
+			       Voo.listarVoos();
 			       break;
 			     case 3:
-			       efetuarReserva();
+			       Reserva.efetuarReserva();
 			       break;
 			     case 4:
-			       listarReservas();
+			       Reserva.listarReservas();
 			       break; 
 			     case 5:
 			       System.out.println("\nEncerrando procedimento!\n");
@@ -38,110 +41,6 @@ public class Menu {
 			       break;
 			   }
 		}
-	}
-	
-	public static void cadastrarVoo(){
-		 boolean sucesso = false;
-		 for(int i = 0; i < voos.length; i++){
-		   if(voos[i] == null){
-		     System.out.println("\nCadastre um novo voo:\n");
-		     System.out.print("Número do voo: ");
-		     int numero = Integer.parseInt(input.nextLine());
-		     System.out.print("Origem: ");
-		     String origem = input.nextLine();
-		     System.out.print("Destino: ");
-		     String destino = input.nextLine();
-		     System.out.print("Data:");
-		     String data_voo = input.nextLine();
-		     System.out.print("Horário: ");
-		     String horario = input.nextLine();
-		     System.out.print("Duração: ");
-		     String duracao = input.nextLine();
-		     System.out.print("Lotação: ");
-		     int lotacao = Integer.parseInt(input.nextLine());
-		     System.out.print("Valor: ");
-		     float valor = Float.parseFloat(input.nextLine());
-		     voos[i] = new Voo(numero, origem, destino, data_voo, horario, duracao, lotacao, valor);
-		     System.out.println("\nVoo cadastrado com sucesso.\n");
-		     sucesso = true;
-		     break;
-		   }  
-		 }
-
-		 if(!sucesso){
-		   System.out.println("\nNão há mais aviões disponíveis para novos voos.\n"); 
-		 }
-	}
-	
-	public static void listarVoos(){
-		 System.out.println("\nPartidas:\n");
-		 for(int i = 0; i < voos.length; i++){
-		   if(voos[i] != null){
-		     System.out.println("Número: " + voos[i].getNumero());
-		     System.out.println("Origem: " + voos[i].getOrigem());
-		     System.out.println("Destino: " + voos[i].getDestino());
-		     System.out.println("Data: " + voos[i].getDataVoo());
-		     System.out.println("Horário: " + voos[i].getHorario());
-		     System.out.println("Duração: " + voos[i].getDuracao());
-		     System.out.println("Lotação: " + voos[i].getLotacao());
-		     System.out.println("Valor: " + voos[i].getValor());		     
-		   } 
-		 }
-	}
-	
-	public static void efetuarReserva(){
-		 System.out.print("\nInforme o voo: ");
-		 int numero = Integer.parseInt(input.nextLine());
-		 boolean encontrado = false;
-
-		 for(int i = 0; i < voos.length; i++){
-		   if((voos[i] != null) && (voos[i].getNumero() == numero)){
-		     encontrado = true;
-		         System.out.print("Nome do passageiro: ");
-		         String nome = input.nextLine();
-		         System.out.print("CPF do passageiro: ");
-		         String cpf =input.nextLine();
-		         System.out.print("E-mail do passageiro: ");
-		         String email = input.nextLine();
-		         System.out.print("Celular do passageiro: ");
-		         String celular = input.nextLine();
-		         Passageiro p = new Passageiro(nome, cpf, email, celular);
-		         Reserva r = new Reserva(voos[i], p);
-		         System.out.println("\nReserva efetuada com sucesso.\n");
-		         break;
-		    }
-		  }
-		    
-		 if(!encontrado){
-		   System.out.println("\nO voo não foi encontrado.\n"); 
-		 }
-	}
-	
-	public static void listarReservas(){
-		 System.out.print("\nInforme o voo: ");
-		 int numero = Integer.parseInt(input.nextLine());
-		 boolean encontrado = false;
-
-		 for(int i = 0; i < voos.length; i++){
-		   if((voos[i] != null) && (voos[i].getNumero() == numero)){
-		     encontrado = true;
-		     System.out.println("\nReservas para o voo " + numero + ":\n");
-
-		     int quantReservas = 0;
-//		     for(int j = 0; j < voos[i].lotacao; j++){
-//		       if(reserva.voo.getNumero() = numero){
-//		         quantReservas++;
-//		         System.out.println("Passageiro: " + reserva.passageiro.getNome());
-//		       }
-//		     }
-		    
-		     System.out.println(quantReservas + " reservas encontradas.\n");
-		   } 
-		 }
-
-		 if(!encontrado){
-		   System.out.println("\nO voo não foi encontrado.\n"); 
-		 }
 	}
 
 
