@@ -116,9 +116,25 @@ public class Menu {
 		   System.out.println("\nO voo não foi encontrado.\n"); 
 		 }
 	}
+	
+	public static void listarReservas(){
+		 System.out.print("\nInforme o voo: ");
+		 int numero = Integer.parseInt(input.nextLine());
+		 boolean encontrado = false;
 
-	
-	
+		 for(int i = 0; i < voos.length; i++){
+		   if((voos[i] != null) && (voos[i].getNumero() == numero)){
+		     encontrado = true;
+		     
+		     System.out.println("\nReservas para o voo informado: " + numero + ":\n");
+
+		   } 
+		 }
+
+		 if(!encontrado){
+		   System.out.println("\nO voo não foi encontrado.\n"); 
+		 }
+	}
 
 
 }
