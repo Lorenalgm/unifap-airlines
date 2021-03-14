@@ -30,7 +30,7 @@ public class Menu {
 			       efetuarReserva();
 			       break;
 			     case 4:
-//			       listarReservas();
+			       listarReservas();
 			       break; 
 			     case 5:
 			       System.out.println("\nEncerrando procedimento!\n");
@@ -100,13 +100,13 @@ public class Menu {
 		         System.out.print("Nome do passageiro: ");
 		         String nome = input.nextLine();
 		         System.out.print("CPF do passageiro: ");
-		         String cpf =input.nextLine());
+		         String cpf =input.nextLine();
 		         System.out.print("E-mail do passageiro: ");
 		         String email = input.nextLine();
 		         System.out.print("Celular do passageiro: ");
 		         String celular = input.nextLine();
 		         Passageiro p = new Passageiro(nome, cpf, email, celular);
-//		         Reserva r = new Reserva(cpf, numero);
+		         Reserva r = new Reserva(voos[i], p);
 		         System.out.println("\nReserva efetuada com sucesso.\n");
 		         break;
 		    }
@@ -125,9 +125,17 @@ public class Menu {
 		 for(int i = 0; i < voos.length; i++){
 		   if((voos[i] != null) && (voos[i].getNumero() == numero)){
 		     encontrado = true;
-		     
-		     System.out.println("\nReservas para o voo informado: " + numero + ":\n");
+		     System.out.println("\nReservas para o voo " + numero + ":\n");
 
+		     int quantReservas = 0;
+//		     for(int j = 0; j < voos[i].lotacao; j++){
+//		       if(reserva.voo.getNumero() = numero){
+//		         quantReservas++;
+//		         System.out.println("Passageiro: " + reserva.passageiro.getNome());
+//		       }
+//		     }
+		    
+		     System.out.println(quantReservas + " reservas encontradas.\n");
 		   } 
 		 }
 
