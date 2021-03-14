@@ -52,7 +52,7 @@ public class Menu {
 		     System.out.print("Destino: ");
 		     String destino = input.nextLine();
 		     System.out.print("Data:");
-		     String data = input.nextLine();
+		     String data_voo = input.nextLine();
 		     System.out.print("Horário: ");
 		     String horario = input.nextLine();
 		     System.out.print("Duração: ");
@@ -61,7 +61,7 @@ public class Menu {
 		     int lotacao = Integer.parseInt(input.nextLine());
 		     System.out.print("Valor: ");
 		     float valor = Float.parseFloat(input.nextLine());
-		     voos[i] = new Voo(numero, origem, destino, data, horario, duracao, lotacao, valor);
+		     voos[i] = new Voo(numero, origem, destino, data_voo, horario, duracao, lotacao, valor);
 		     System.out.println("\nVoo cadastrado com sucesso.\n");
 		     sucesso = true;
 		     break;
