@@ -80,7 +80,7 @@ public class Menu {
 		     System.out.println("Número: " + voos[i].getNumero());
 		     System.out.println("Origem: " + voos[i].getOrigem());
 		     System.out.println("Destino: " + voos[i].getDestino());
-		     System.out.println("Data: " + voos[i].getData());
+		     System.out.println("Data: " + voos[i].getDataVoo());
 		     System.out.println("Horário: " + voos[i].getHorario());
 		     System.out.println("Duração: " + voos[i].getDuracao());
 		     System.out.println("Lotação: " + voos[i].getLotacao());
@@ -106,7 +106,7 @@ public class Menu {
 		         System.out.print("Celular do passageiro: ");
 		         String celular = input.nextLine();
 		         Passageiro p = new Passageiro(nome, cpf, email, celular);
-		         Reserva r = new Reserva(cpf, numero);
+//		         Reserva r = new Reserva(cpf, numero);
 		         System.out.println("\nReserva efetuada com sucesso.\n");
 		         break;
 		    }
