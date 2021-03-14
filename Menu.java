@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Menu {
 	 static Scanner input = new Scanner(System.in);
-	 static Voo voos[] = new Voo[1];
+	 static Voo voos[] = new Voo[10];
 
 	public static void main(String[] args) {
 		 exibirMenu(); 
@@ -55,11 +55,11 @@ public class Menu {
 		     String data = input.nextLine();
 		     System.out.print("Horário: ");
 		     String horario = input.nextLine();
-		     System.out.print("Duração");
+		     System.out.print("Duração: ");
 		     String duracao = input.nextLine();
-		     System.out.print("Lotação");
+		     System.out.print("Lotação: ");
 		     int lotacao = Integer.parseInt(input.nextLine());
-		     System.out.print("Valor");
+		     System.out.print("Valor: ");
 		     float valor = Float.parseFloat(input.nextLine());
 		     voos[i] = new Voo(numero, origem, destino, data, horario, duracao, lotacao, valor);
 		     System.out.println("\nVoo cadastrado com sucesso.\n");
@@ -70,6 +70,22 @@ public class Menu {
 
 		 if(!sucesso){
 		   System.out.println("\nNão há mais aviões disponíveis para novos voos.\n"); 
+		 }
+	}
+	
+	public static void listarVoos(){
+		 System.out.println("\nPartidas:\n");
+		 for(int i = 0; i < voos.length; i++){
+		   if(voos[i] != null){
+		     System.out.println("Número: " + voos[i].getNumero());
+		     System.out.println("Origem: " + voos[i].getOrigem());
+		     System.out.println("Destino: " + voos[i].getDestino());
+		     System.out.println("Data: " + voos[i].getData());
+		     System.out.println("Horário: " + voos[i].getHorario());
+		     System.out.println("Duração: " + voos[i].getDuracao());
+		     System.out.println("Lotação: " + voos[i].getLotacao());
+		     System.out.println("Valor: " + voos[i].getValor());		     
+		   } 
 		 }
 	}
 
