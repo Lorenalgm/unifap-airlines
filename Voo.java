@@ -89,11 +89,18 @@ public class Voo extends Menu {
 	}
 	
 	public static void cadastrarVoo(){
-		boolean sucesso = false;
-
 		     System.out.println("\nCadastre um novo voo:\n");
 		     System.out.print("Número do voo: ");
-		     int numero = Integer.parseInt(input.nextLine());
+		     int numero = 0;
+		     
+		     try{
+		    	 numero = Integer.parseInt(input.nextLine());
+
+		     }catch(NumberFormatException ex){
+		    	 System.out.print("Formato inválido! Digite um número\n");
+		    	 Menu.exibirMenu();
+		     }		     
+
 		     System.out.print("Origem: ");
 		     String origem = input.nextLine();
 		     System.out.print("Destino: ");
@@ -104,26 +111,49 @@ public class Voo extends Menu {
 		     String horario = input.nextLine();
 		     System.out.print("Duração: ");
 		     String duracao = input.nextLine();
+		     
 		     System.out.print("Lotação: ");
-		     int lotacao = Integer.parseInt(input.nextLine());
+		     
+		     int lotacao = 0;
+		     
+		     try{
+		    	 lotacao = Integer.parseInt(input.nextLine());
+
+		     }catch(NumberFormatException ex){
+		    	 System.out.print("Formato inválido! Digite um número\n");
+		    	 Menu.exibirMenu();
+		     }
+		     
+		     
 		     System.out.print("Valor: ");
-		     float valor = Float.parseFloat(input.nextLine());
+		     float valor = 0;
+		     
+		     try{
+		    	 valor = Float.parseFloat(input.nextLine());
+		     }catch(NumberFormatException ex){
+		    	 System.out.print("Formato inválido! Digite um número\n");
+		    	 Menu.exibirMenu();
+		     }
+		     
 		     Voo v = new Voo(numero, origem, destino, data_voo, horario, duracao, lotacao, valor);
 		     voos.add(v);
 		     
 		     System.out.println("\nVoo cadastrado com sucesso.\n");
-		     sucesso = true;
-		     
+ 
 
-		 if(!sucesso){
-		   System.out.println("\nNão há mais aviões disponíveis para novos voos.\n"); 
-		 }
 	}
 	
-	public static void listarVoos(){
-		 System.out.println("\nPartidas:\n");
+	public static void listarVoos(){	 
+		 
+		 if(voos.size() < 1) {
+			 System.out.println("\nNenhum voo encontrado\n");
+		 }else {
+			 System.out.println("\nPartidas:\n"); 
+		 } 
+		 
 		
 		 for(Voo voo : voos){
+			 System.out.println("\n------------\n");
 		     System.out.println("Número: " + voo.getNumero());
 		     System.out.println("Origem: " + voo.getOrigem());
 		     System.out.println("Destino: " + voo.getDestino());
@@ -131,7 +161,8 @@ public class Voo extends Menu {
 		     System.out.println("Horário: " + voo.getHorario());
 		     System.out.println("Duração: " + voo.getDuracao());
 		     System.out.println("Lotação: " + voo.getLotacao());
-		     System.out.println("Valor: " + voo.getValor());		     
+		     System.out.println("Valor: " + voo.getValor());
+		     System.out.println("\n");
 		 }
 	}
 	
