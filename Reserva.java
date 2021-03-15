@@ -30,7 +30,17 @@ public class Reserva extends Menu {
 	
 	public static void efetuarReserva(){
 		 System.out.print("\nInforme o voo: ");
-		 int numero = Integer.parseInt(input.nextLine());
+
+		 int numero = 0;
+	     
+	     try{
+	    	 numero = Integer.parseInt(input.nextLine());
+
+	     }catch(NumberFormatException ex){
+	    	 System.out.print("Formato inválido! Digite um número\n");
+	    	 Menu.exibirMenu();
+	     }
+		 
 		 boolean encontrado = false;
 		 
 		 for(Voo v : voos){
@@ -52,13 +62,29 @@ public class Reserva extends Menu {
 	
 	public static void listarReservas(){
 		 System.out.print("\nInforme o voo: ");
-		 int numero = Integer.parseInt(input.nextLine());
+		 
+		 int numero = 0;
+	     
+	     try{
+	    	 numero = Integer.parseInt(input.nextLine());
+
+	     }catch(NumberFormatException ex){
+	    	 System.out.print("Formato inválido! Digite um número\n");
+	    	 Menu.exibirMenu();
+	     }
+		 
 		 boolean encontrado = false;
 
 		 for(Voo v : voos){
 			 if(v.getNumero() == numero) {
 				 encontrado = true;
-				 System.out.println("\nReservas para o voo " + numero + ":\n");
+				 
+				 if(v.listaReservas().size() < 1) {
+					 System.out.println("\nNenhuma reserva encontrada\n");
+				 }else {
+					 System.out.println("\nReservas para o voo " + numero + ":\n");
+				 }		 
+				 
 				 
 				 for(Reserva r : v.listaReservas()){
 					System.out.println("Passageiro: " + r.passageiro.getNome());
